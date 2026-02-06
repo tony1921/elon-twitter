@@ -1,0 +1,63 @@
+name: Update Tweets
+
+on:
+  schedule:
+    - cron: '*/5 * * * *'
+  workflow_dispatch:
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+
+    - name: Install requests
+      run: pip install requests
+
+    - name: Fetch data
+      run: |
+        python3 << 'EOF'
+import requests
+import json
+from datetime import datetime, timedelta
+
+url = 'https://xtracker.polymarket.com/api/users/elonmusk/posts'
+start = '2026-02-03T17:00:00.000Z'
+end = '2026-02-10T22:00:00.000Z'
+
+r = requests.get(url, params={'startDate': start, 'endDate': end}, timeout=30)
+if r.status_code == 200:
+    posts = r.json()['data']
+
+    daily = {}
+    for p in posts:
+        dt = datetime.fromisoformat(p['createdAt'].replace('Z', '+00:00'))
+        est = dt - timedelta(hours=5)
+        date = est.strftime('%Y-%m-%d')
+        daily[date] = daily.get(date, 0) + 1
+
+    records = [{'date': d, 'count': daily[d], 'source': 'github', 'updated': datetime.now().isoformat()}
+              for d in sorted(daily.keys())]
+
+    import os
+    os.makedirs('data', exist_ok=True)
+    with open('data/daily_tweets.json', 'w') as f:
+        json.dump(records, f, indent=2)
+
+    print(f"Updated: {len(posts)} tweets")
+EOF
+
+    - name: Commit
+      run: |
+        git config user.email "action@github.com"
+        git config user.name "GitHub"
+        git add data/daily_tweets.json
+        git diff --staged --quiet || git commit -m "Update $(date '+%Y-%m-%d %H:%M:%S')" && git push
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
