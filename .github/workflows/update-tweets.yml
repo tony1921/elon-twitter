@@ -1,0 +1,91 @@
+name: Update Elon Musk Tweet Data
+
+  on:
+    schedule:
+      - cron: '*/5 * * * *'
+    workflow_dispatch:
+
+  jobs:
+    update-data:
+      runs-on: ubuntu-latest
+
+      steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install requests
+
+      - name: Fetch tweet data from XTracker
+        run: |
+          python3 << 'EOF'
+          import requests
+          import json
+          from datetime import datetime, timedelta
+
+          CURRENT_PERIOD = {
+            'name': 'Feb 3 - Feb 10, 2026',
+            'start': '2026-02-03T17:00:00.000Z',
+            'end': '2026-02-10T22:00:00.000Z'
+          }
+
+          url = 'https://xtracker.polymarket.com/api/users/elonmusk/posts'
+
+          response = requests.get(
+            url,
+            params={
+              'startDate': CURRENT_PERIOD['start'],
+              'endDate': CURRENT_PERIOD['end']
+            },
+            headers={'User-Agent': 'Mozilla/5.0'},
+            timeout=30
+          )
+
+          if response.status_code == 200:
+            data = response.json()
+            if data.get('data'):
+              posts = data['data']
+              daily_counts = {}
+
+              for post in posts:
+                created_at = post.get('createdAt', '')
+                if created_at:
+                  dt = datetime.fromisoformat(created_at.replace('Z', '+00:00'))
+                  est_dt = dt - timedelta(hours=5)
+                  date = est_dt.strftime("%Y-%m-%d")
+                  daily_counts[date] = daily_counts.get(date, 0) + 1
+
+              records = []
+              for date in sorted(daily_counts.keys()):
+                records.append({
+                  'date': date,
+                  'count': daily_counts[date],
+                  'period': CURRENT_PERIOD['name'],
+                  'source': 'github_actions',
+                  'updated_at': datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                })
+
+              import os
+              os.makedirs('data', exist_ok=True)
+
+              with open('data/daily_tweets.json', 'w') as f:
+                json.dump(records, f, ensure_ascii=False, indent=2)
+
+              print(f"✅ Updated: {len(posts)} tweets from XTracker")
+          EOF
+
+      - name: Commit and push
+        run: |
+          git config --local user.email "action[bot]@github.com"
+          git config --local user.name "GitHub Action"
+          git add data/daily_tweets.json
+          git diff --staged --quiet || git commit -m "🤖 Auto update $(date '+%Y-%m-%d %H:%M:%S')" && git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
