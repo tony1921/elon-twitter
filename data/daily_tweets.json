@@ -1,0 +1,369 @@
+[
+  {
+    "date": "2025-12-08",
+    "count": 15,
+    "source": "xtracker_api",
+    "created_at": "2026-02-06 14:13:19"
+  },
+  {
+    "date": "2025-12-09",
+    "count": 55,
+    "source": "xtracker_api",
+    "created_at": "2026-02-06 14:13:19"
+  },
+  {
+    "date": "2025-12-10",
+    "count": 58,
+    "source": "xtracker_api",
+    "created_at": "2026-02-06 14:13:19"
+  },
+  {
+    "date": "2025-12-11",
+    "count": 43,
+    "source": "xtracker_api",
+    "created_at": "2026-02-06 14:13:19"
+  },
+  {
+    "date": "2025-12-12",
+    "count": 21,
+    "source": "xtracker_api",
+    "created_at": "2026-02-06 14:13:19"
+  },
+  {
+    "date": "2025-12-13",
+    "count": 21,
+    "source": "xtracker_api",
+    "created_at": "2026-02-06 14:13:19"
+  },
+  {
+    "date": "2025-12-14",
+    "count": 28,
+    "source": "xtracker_api",
+    "created_at": "2026-02-06 14:13:19"
+  },
+  {
+    "date": "2025-12-15",
+    "count": 42,
+    "source": "xtracker_api",
+    "created_at": "2026-02-06 14:13:19"
+  },
+  {
+    "date": "2025-12-16",
+    "count": 31,
+    "source": "xtracker_api",
+    "created_at": "2026-02-06 14:13:19"
+  },
+  {
+    "date": "2025-12-17",
+    "count": 63,
+    "source": "xtracker_api",
+    "created_at": "2026-02-06 14:13:19"
+  },
+  {
+    "date": "2025-12-18",
+    "count": 27,
+    "source": "xtracker_api",
+    "created_at": "2026-02-06 14:13:19"
+  },
+  {
+    "date": "2025-12-19",
+    "count": 80,
+    "source": "xtracker_api",
+    "created_at": "2026-02-06 14:13:19"
+  },
+  {
+    "date": "2025-12-20",
+    "count": 10,
+    "source": "xtracker_api",
+    "created_at": "2026-02-06 14:13:19"
+  },
+  {
+    "date": "2025-12-21",
+    "count": 87,
+    "source": "xtracker_api",
+    "created_at": "2026-02-06 14:13:19"
+  },
+  {
+    "date": "2025-12-22",
+    "count": 45,
+    "source": "xtracker_api",
+    "created_at": "2026-02-06 14:13:19"
+  },
+  {
+    "date": "2025-12-23",
+    "count": 30,
+    "source": "xtracker_api",
+    "created_at": "2026-02-06 14:13:19"
+  },
+  {
+    "date": "2025-12-24",
+    "count": 71,
+    "source": "xtracker_api",
+    "created_at": "2026-02-06 14:13:19"
+  },
+  {
+    "date": "2025-12-25",
+    "count": 35,
+    "source": "xtracker_api",
+    "created_at": "2026-02-06 14:13:19"
+  },
+  {
+    "date": "2025-12-26",
+    "count": 53,
+    "source": "xtracker_api",
+    "created_at": "2026-02-06 14:13:19"
+  },
+  {
+    "date": "2025-12-27",
+    "count": 51,
+    "source": "xtracker_api",
+    "created_at": "2026-02-06 14:13:19"
+  },
+  {
+    "date": "2025-12-28",
+    "count": 54,
+    "source": "xtracker_api",
+    "created_at": "2026-02-06 14:13:19"
+  },
+  {
+    "date": "2025-12-29",
+    "count": 92,
+    "source": "xtracker_api",
+    "created_at": "2026-02-06 14:13:19"
+  },
+  {
+    "date": "2025-12-30",
+    "count": 102,
+    "source": "xtracker_api",
+    "created_at": "2026-02-06 14:13:19"
+  },
+  {
+    "date": "2025-12-31",
+    "count": 89,
+    "source": "xtracker_api",
+    "created_at": "2026-02-06 14:13:19"
+  },
+  {
+    "date": "2026-01-01",
+    "count": 54,
+    "source": "xtracker_api",
+    "created_at": "2026-02-06 14:13:19"
+  },
+  {
+    "date": "2026-01-02",
+    "count": 64,
+    "source": "xtracker_api",
+    "created_at": "2026-02-06 14:13:19"
+  },
+  {
+    "date": "2026-01-03",
+    "count": 93,
+    "source": "xtracker_api",
+    "created_at": "2026-02-06 14:13:19"
+  },
+  {
+    "date": "2026-01-04",
+    "count": 84,
+    "source": "xtracker_api",
+    "created_at": "2026-02-06 14:13:19"
+  },
+  {
+    "date": "2026-01-05",
+    "count": 56,
+    "source": "xtracker_api",
+    "created_at": "2026-02-06 14:13:19"
+  },
+  {
+    "date": "2026-01-06",
+    "count": 74,
+    "source": "xtracker_api",
+    "created_at": "2026-02-06 14:13:19"
+  },
+  {
+    "date": "2026-01-07",
+    "count": 83,
+    "source": "xtracker_api",
+    "created_at": "2026-02-06 14:13:19"
+  },
+  {
+    "date": "2026-01-08",
+    "count": 109,
+    "source": "xtracker_api",
+    "created_at": "2026-02-06 14:13:19"
+  },
+  {
+    "date": "2026-01-09",
+    "count": 75,
+    "source": "xtracker_api",
+    "created_at": "2026-02-06 14:13:19"
+  },
+  {
+    "date": "2026-01-10",
+    "count": 110,
+    "source": "xtracker_api",
+    "created_at": "2026-02-06 14:13:19"
+  },
+  {
+    "date": "2026-01-11",
+    "count": 84,
+    "source": "xtracker_api",
+    "created_at": "2026-02-06 14:13:19"
+  },
+  {
+    "date": "2026-01-12",
+    "count": 37,
+    "source": "xtracker_api",
+    "created_at": "2026-02-06 14:13:19"
+  },
+  {
+    "date": "2026-01-13",
+    "count": 43,
+    "source": "xtracker_api",
+    "created_at": "2026-02-06 14:13:19"
+  },
+  {
+    "date": "2026-01-14",
+    "count": 100,
+    "source": "xtracker_api",
+    "created_at": "2026-02-06 14:13:19"
+  },
+  {
+    "date": "2026-01-15",
+    "count": 79,
+    "source": "xtracker_api",
+    "created_at": "2026-02-06 14:13:19"
+  },
+  {
+    "date": "2026-01-16",
+    "count": 121,
+    "source": "xtracker_api",
+    "created_at": "2026-02-06 14:13:19"
+  },
+  {
+    "date": "2026-01-17",
+    "count": 65,
+    "source": "xtracker_api",
+    "created_at": "2026-02-06 14:13:19"
+  },
+  {
+    "date": "2026-01-18",
+    "count": 68,
+    "source": "xtracker_api",
+    "created_at": "2026-02-06 14:13:19"
+  },
+  {
+    "date": "2026-01-19",
+    "count": 48,
+    "source": "xtracker_api",
+    "created_at": "2026-02-06 14:13:19"
+  },
+  {
+    "date": "2026-01-20",
+    "count": 57,
+    "source": "xtracker_api",
+    "created_at": "2026-02-06 14:13:19"
+  },
+  {
+    "date": "2026-01-21",
+    "count": 23,
+    "source": "xtracker_api",
+    "created_at": "2026-02-06 14:13:19"
+  },
+  {
+    "date": "2026-01-22",
+    "count": 97,
+    "source": "xtracker_api",
+    "created_at": "2026-02-06 14:13:19"
+  },
+  {
+    "date": "2026-01-23",
+    "count": 82,
+    "source": "xtracker_api",
+    "created_at": "2026-02-06 14:13:19"
+  },
+  {
+    "date": "2026-01-24",
+    "count": 44,
+    "source": "xtracker_api",
+    "created_at": "2026-02-06 14:13:19"
+  },
+  {
+    "date": "2026-01-25",
+    "count": 60,
+    "source": "xtracker_api",
+    "created_at": "2026-02-06 14:13:19"
+  },
+  {
+    "date": "2026-01-26",
+    "count": 50,
+    "source": "xtracker_api",
+    "created_at": "2026-02-06 14:13:19"
+  },
+  {
+    "date": "2026-01-27",
+    "count": 39,
+    "source": "xtracker_api",
+    "created_at": "2026-02-06 14:13:19"
+  },
+  {
+    "date": "2026-01-28",
+    "count": 40,
+    "source": "xtracker_api",
+    "created_at": "2026-02-06 14:13:19"
+  },
+  {
+    "date": "2026-01-29",
+    "count": 97,
+    "source": "xtracker_api",
+    "created_at": "2026-02-06 14:13:19"
+  },
+  {
+    "date": "2026-01-30",
+    "count": 56,
+    "source": "xtracker_api",
+    "created_at": "2026-02-06 14:13:19"
+  },
+  {
+    "date": "2026-01-31",
+    "count": 44,
+    "source": "xtracker_api",
+    "created_at": "2026-02-06 14:13:19"
+  },
+  {
+    "date": "2026-02-01",
+    "count": 43,
+    "source": "xtracker_api",
+    "created_at": "2026-02-06 14:13:19"
+  },
+  {
+    "date": "2026-02-02",
+    "count": 34,
+    "source": "xtracker_api",
+    "created_at": "2026-02-06 14:13:19"
+  },
+  {
+    "date": "2026-02-03",
+    "count": 59,
+    "source": "xtracker_api",
+    "created_at": "2026-02-06 14:13:19"
+  },
+  {
+    "date": "2026-02-04",
+    "count": 41,
+    "source": "xtracker_api",
+    "created_at": "2026-02-06 14:13:19"
+  },
+  {
+    "date": "2026-02-05",
+    "count": 22,
+    "source": "xtracker_api",
+    "created_at": "2026-02-06 14:13:19"
+  },
+  {
+    "date": "2026-02-06",
+    "count": 5,
+    "source": "xtracker_api",
+    "created_at": "2026-02-06 14:13:19",
+    "updated_at": "2026-02-06 16:29:17"
+  }
+]
