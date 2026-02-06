@@ -183,7 +183,7 @@
         </div>
 
         <div class="refresh-info">
-            ⏰ 数据每小时自动更新 | 下次更新: <span id="nextUpdate"></span>
+            ⏰ 数据每5分钟自动更新 | 下次更新: <span id="nextUpdate"></span>
         </div>
     </div>
 
@@ -237,7 +237,7 @@
                     });
 
                     // 下次更新时间
-                    const nextUpdate = new Date(Date.now() + 3600000);
+                    const nextUpdate = new Date(Date.now() + 300000);
                     document.getElementById('nextUpdate').textContent =
                         nextUpdate.toLocaleTimeString('zh-CN', { hour: '2-digit', minute: '2-digit' });
                 })
