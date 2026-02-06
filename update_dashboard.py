@@ -207,23 +207,32 @@ def main():
     print("  🔄 更新数据 & 推送通知")
     print("=" * 70)
 
-    # 更新看板数据
-    dashboard_data, today_count = update_dashboard_data()
+    try:
+        # 更新看板数据
+        dashboard_data, today_count = update_dashboard_data()
 
-    # 同时更新Excel
-    print("\n📊 更新Excel...")
-    import subprocess
-    subprocess.run(['python3', 'generate_excel.py'], capture_output=True)
+        # 同时更新Excel
+        print("\n📊 更新Excel...")
+        import subprocess
+        subprocess.run(['python3', 'generate_excel.py'], capture_output=True)
 
-    # 发送Telegram通知
-    print("\n📱 发送Telegram通知...")
-    send_telegram_notification(
-        today_count,
-        dashboard_data['recent_days'],
-        dashboard_data['stats']
-    )
+        # 发送Telegram通知 (只有当数据正常时才发送)
+        print("\n📱 发送Telegram通知...")
+        if 'recent_days' in dashboard_data and 'stats' in dashboard_data:
+            send_telegram_notification(
+                today_count,
+                dashboard_data['recent_days'],
+                dashboard_data['stats']
+            )
+        else:
+            print("⚠️  数据不完整，跳过Telegram通知")
 
-    print("\n✅ 全部完成！")
+        print("\n✅ 全部完成！")
+    except Exception as e:
+        print(f"\n❌ 更新失败: {e}")
+        import traceback
+        traceback.print_exc()
+
     print("=" * 70)
 
 
