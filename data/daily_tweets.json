@@ -343,27 +343,34 @@
   },
   {
     "date": "2026-02-03",
-    "count": 59,
+    "count": 33,
     "source": "xtracker_api",
-    "created_at": "2026-02-06 14:13:19"
+    "created_at": "2026-02-06 14:13:19",
+    "period": "Feb 3 - Feb 10, 2026",
+    "updated_at": "2026-02-06 20:08:35"
   },
   {
     "date": "2026-02-04",
-    "count": 41,
+    "count": 51,
     "source": "xtracker_api",
-    "created_at": "2026-02-06 14:13:19"
+    "created_at": "2026-02-06 14:13:19",
+    "period": "Feb 3 - Feb 10, 2026",
+    "updated_at": "2026-02-06 20:08:35"
   },
   {
     "date": "2026-02-05",
-    "count": 22,
+    "count": 11,
     "source": "xtracker_api",
-    "created_at": "2026-02-06 14:13:19"
+    "created_at": "2026-02-06 14:13:19",
+    "period": "Feb 3 - Feb 10, 2026",
+    "updated_at": "2026-02-06 20:08:35"
   },
   {
     "date": "2026-02-06",
-    "count": 5,
+    "count": 15,
     "source": "xtracker_api",
     "created_at": "2026-02-06 14:13:19",
-    "updated_at": "2026-02-06 16:29:17"
+    "updated_at": "2026-02-06 20:08:36",
+    "period": "Feb 3 - Feb 10, 2026"
   }
 ]
