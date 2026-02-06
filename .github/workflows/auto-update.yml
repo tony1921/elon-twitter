@@ -38,3 +38,15 @@ jobs:
           git diff --staged --quiet || git commit -m "🤖 Auto update $(date '+%Y-%m-%d %H:%M:%S')" && git push
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Deploy to GitHub Pages
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git checkout gh-pages
+          git checkout main -- dashboard.html data/daily_tweets.json data/dashboard_data.json
+          git add .
+          git diff --staged --quiet || git commit -m "📊 Update dashboard $(date '+%Y-%m-%d %H:%M:%S')" && git push
+          git checkout main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
