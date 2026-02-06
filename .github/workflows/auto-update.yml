@@ -53,6 +53,13 @@ jobs:
 
       - name: Send Telegram notification
         run: |
+          # 只在整点时发送通知（每小时1次）
+          CURRENT_MIN=$(date '+%M')
+          if [ "$CURRENT_MIN" != "00" ]; then
+            echo "不是整点，跳过 Telegram 通知"
+            exit 0
+          fi
+
           # 读取最新数据
           TODAY_COUNT=$(python3 -c "import json; d=json.load(open('data/dashboard_data.json')); print(d['today']['count'])")
           WEEK_AVG=$(python3 -c "import json; d=json.load(open('data/dashboard_data.json')); print(int(d['week_avg']))")
@@ -79,7 +86,7 @@ $(python3 -c "import json; d=json.load(open('data/dashboard_data.json')); [print
 🌐 看板: https://tony1921.github.io/elon-twitter/dashboard.html
 
 ━━━━━━━━━━━━━━━━━━━━━
-🤖 GitHub Actions Auto-update"
+🤖 GitHub Actions Auto-update (每小时推送)"
 
           # 发送Telegram消息
           curl -s -X POST "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage" \
