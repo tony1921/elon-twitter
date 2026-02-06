@@ -57,24 +57,32 @@ jobs:
           TODAY_COUNT=$(python3 -c "import json; d=json.load(open('data/dashboard_data.json')); print(d['today']['count'])")
           WEEK_AVG=$(python3 -c "import json; d=json.load(open('data/dashboard_data.json')); print(int(d['week_avg']))")
           MAX_COUNT=$(python3 -c "import json; d=json.load(open('data/dashboard_data.json')); print(d['stats']['max'])")
-          LAST_UPDATE=$(python3 -c "import json; d=json.load(open('data/dashboard_data.json')); print(d['last_update'])")
 
-          # 获取最近3天数据
-          RECENT_DAYS=$(python3 << 'PYEOF'
-import json
-d = json.load(open('data/dashboard_data.json'))
-for day in d['recent_days'][-3:]:
-    print(f"{day['date']}: {day['count']}条")
-PYEOF
-)
+          # 构建消息
+          MESSAGE="🤖 *Elon Musk 推文数据更新*
+
+📅 $(date '+%Y-%m-%d') | 🕐 $(date '+%H:%M')
+
+━━━━━━━━━━━━━━━━━━━━━
+📊 *今日数据*
+   今天: *${TODAY_COUNT}* 条
+   7天平均: ${WEEK_AVG} 条/天
+
+━━━━━━━━━━━━━━━━━━━━━
+📈 *最近3天*
+$(python3 -c "import json; d=json.load(open('data/dashboard_data.json')); [print(f'   {x[\"date\"]}: {x[\"count\"]}条') for x in d['recent_days'][-3:]]")
+
+━━━━━━━━━━━━━━━━━━━━━
+📊 *历史统计*
+   最高: ${MAX_COUNT} 条
+
+🌐 看板: https://tony1921.github.io/elon-twitter/dashboard.html
+
+━━━━━━━━━━━━━━━━━━━━━
+🤖 GitHub Actions Auto-update"
 
           # 发送Telegram消息
-          curl -s -X POST \
-            "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage" \
+          curl -s -X POST "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage" \
             -H "Content-Type: application/json" \
-            -d "{
-              \"chat_id\": \"${{ secrets.TELEGRAM_CHAT_ID }}\",
-              \"text\": \"🤖 *Elon Musk 推文数据更新*\n\n📅 $(date '+%Y-%m-%d') | 🕐 $(date '+%H:%M')\n\n━━━━━━━━━━━━━━━━━━━━━\n📊 *今日数据*\n   今天: *${TODAY_COUNT}* 条\n   7天平均: ${WEEK_AVG} 条/天\n\n━━━━━━━━━━━━━━━━━━━━━\n📈 *最近3天*\n${RECENT_DAYS}\n\n━━━━━━━━━━━━━━━━━━━━━\n📊 *历史统计*\n   最高: ${MAX_COUNT} 条\n\n🌐 看板: https://tony1921.github.io/elon-twitter/dashboard.html\n\n━━━━━━━━━━━━━━━━━━━━━\n🤖 GitHub Actions Auto-update\",
-              \"parse_mode\": \"Markdown\"
-            }"
+            -d "{\"chat_id\": \"${{ secrets.TELEGRAM_CHAT_ID }}\", \"text\": \"${MESSAGE}\", \"parse_mode\": \"Markdown\"}"
         if: success()
