@@ -52,7 +52,9 @@ while True:
                 capture_output=True,
                 text=True,
                 timeout=60,
-                env=env
+                env=env,
+                encoding='utf-8',
+                errors='replace'
             )
 
             with open(log_file, "a", encoding="utf-8") as f:
