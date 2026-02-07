@@ -10,8 +10,8 @@ from datetime import datetime, timedelta
 
 # 当前追踪期间配置
 CURRENT_PERIOD = {
-    'name': 'Feb 10 - Feb 24, 2026',
-    'start': '2026-02-10T17:00:00.000Z',
+    'name': 'Feb 1 - Feb 28, 2026',
+    'start': '2026-02-01T00:00:00.000Z',
     'end': '2026-02-28T23:59:59.000Z'
 }
 
