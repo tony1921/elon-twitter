@@ -45,11 +45,14 @@ while True:
         # 运行更新脚本
         try:
             # 运行 Python 更新脚本
+            env = os.environ.copy()
+            env['PYTHONIOENCODING'] = 'utf-8'
             result = subprocess.run(
                 ["python", "update_dashboard.py"],
                 capture_output=True,
                 text=True,
-                timeout=60
+                timeout=60,
+                env=env
             )
 
             with open(log_file, "a", encoding="utf-8") as f:
