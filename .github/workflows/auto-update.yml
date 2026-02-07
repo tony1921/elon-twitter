@@ -1,41 +1,10 @@
-name: Auto Update Tweet Data
+name: Test
 
 on:
-  schedule:
-    - cron: '*/5 * * * *'
   workflow_dispatch:
 
 jobs:
-  update:
+  test:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-python@v4
-        with:
-          python-version: '3.9'
-      - run: pip install requests openpyxl pandas
-      - run: python3 update_dashboard.py || true
-      - name: Commit
-        run: |
-          git config user.email "bot@github.com"
-          git config user.name "bot"
-          git add data/*.json || true
-          git commit -m "update" || true
-          git push || true
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Deploy
-        run: |
-          git config user.email "bot@github.com"
-          git config user.name "bot"
-          git fetch origin gh-pages:gh-pages || git checkout -b gh-pages
-          git checkout gh-pages
-          git checkout main -- dashboard.html data/daily_tweets.json data/dashboard_data.json || true
-          git add .
-          git commit -m "deploy" || true
-          git push origin gh-pages || true
-          git checkout main
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - run: echo "Hello World"
