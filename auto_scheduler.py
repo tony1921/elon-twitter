@@ -52,7 +52,7 @@ while True:
             env = os.environ.copy()
             env['PYTHONIOENCODING'] = 'utf-8'
             result = subprocess.run(
-                ["python", "update_dashboard.py"],
+                ["python", "update_dashboard_with_pm.py"],
                 capture_output=True,
                 text=True,
                 timeout=60,
