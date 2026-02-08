@@ -329,7 +329,7 @@
     "source": "xtracker_api",
     "created_at": "2026-02-06 14:13:19",
     "period": "Feb 1 - Feb 28, 2026",
-    "updated_at": "2026-02-07 19:43:47"
+    "updated_at": "2026-02-08 11:24:38"
   },
   {
     "date": "2026-02-01",
@@ -337,7 +337,7 @@
     "source": "xtracker_api",
     "created_at": "2026-02-06 14:13:19",
     "period": "Feb 1 - Feb 28, 2026",
-    "updated_at": "2026-02-07 19:43:47"
+    "updated_at": "2026-02-08 11:24:38"
   },
   {
     "date": "2026-02-02",
@@ -345,7 +345,7 @@
     "source": "xtracker_api",
     "created_at": "2026-02-06 14:13:19",
     "period": "Feb 1 - Feb 28, 2026",
-    "updated_at": "2026-02-07 19:43:47"
+    "updated_at": "2026-02-08 11:24:38"
   },
   {
     "date": "2026-02-03",
@@ -353,7 +353,7 @@
     "source": "xtracker_api",
     "created_at": "2026-02-06 14:13:19",
     "period": "Feb 1 - Feb 28, 2026",
-    "updated_at": "2026-02-07 19:43:47"
+    "updated_at": "2026-02-08 11:24:38"
   },
   {
     "date": "2026-02-04",
@@ -361,7 +361,7 @@
     "source": "xtracker_api",
     "created_at": "2026-02-06 14:13:19",
     "period": "Feb 1 - Feb 28, 2026",
-    "updated_at": "2026-02-07 19:43:47"
+    "updated_at": "2026-02-08 11:24:38"
   },
   {
     "date": "2026-02-05",
@@ -369,22 +369,22 @@
     "source": "xtracker_api",
     "created_at": "2026-02-06 14:13:19",
     "period": "Feb 1 - Feb 28, 2026",
-    "updated_at": "2026-02-07 19:43:47"
+    "updated_at": "2026-02-08 11:24:38"
   },
   {
     "date": "2026-02-06",
     "count": 28,
     "source": "xtracker_api",
     "created_at": "2026-02-06 14:13:19",
-    "updated_at": "2026-02-07 19:43:47",
+    "updated_at": "2026-02-08 11:24:38",
     "period": "Feb 1 - Feb 28, 2026"
   },
   {
     "date": "2026-02-07",
-    "count": 7,
+    "count": 17,
     "period": "Feb 1 - Feb 28, 2026",
     "source": "xtracker_api",
     "created_at": "2026-02-07 19:38:44",
-    "updated_at": "2026-02-07 19:43:47"
+    "updated_at": "2026-02-08 11:24:38"
   }
 ]
