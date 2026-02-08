@@ -229,7 +229,10 @@
         </div>
 
         <div class="chart-container">
-            <h2>📊 最近7天</h2>
+            <h2>📊 Polymarket Feb 3-10 市场 (最近几天)</h2>
+            <div style="margin-bottom: 15px; color: #666; font-size: 0.9em;">
+                时间范围: 2月3日 12:00 PM ET - 2月10日 12:00 PM ET
+            </div>
             <div class="recent-days" id="recentDays"></div>
         </div>
 
@@ -276,12 +279,15 @@
                     document.getElementById('maxCount').textContent = data.stats.max;
                     document.getElementById('maxDate').textContent = data.stats.max_date;
 
-                    // 最近7天
+                    // 最近7天 - 使用 Polymarket 市场数据
                     const recentDaysEl = document.getElementById('recentDays');
                     recentDaysEl.innerHTML = '';
 
-                    data.recent_days.forEach((day, index) => {
-                        const isToday = index === data.recent_days.length - 1;
+                    // 优先使用 Polymarket 市场数据，否则使用完整日历数据
+                    const daysToShow = data.polymarket_recent_days || data.recent_days || [];
+
+                    daysToShow.forEach((day, index) => {
+                        const isToday = index === daysToShow.length - 1;
                         recentDaysEl.innerHTML += `
                             <div class="day-card ${isToday ? 'today' : ''}">
                                 <div class="date">${day.date}</div>
