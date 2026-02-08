@@ -127,6 +127,57 @@
             background: linear-gradient(135deg, #10b981 0%, #059669 100%);
         }
 
+        /* Polymarket 市场样式 */
+        .market-card {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            color: white;
+        }
+
+        .market-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .market-title {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        .market-total {
+            font-size: 2.5em;
+            font-weight: bold;
+        }
+
+        .market-days {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 10px;
+        }
+
+        .market-day {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .market-day .date {
+            font-size: 0.85em;
+            opacity: 0.9;
+            margin-bottom: 5px;
+        }
+
+        .market-day .count {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
         .refresh-info {
             text-align: center;
             color: white;
@@ -182,6 +233,9 @@
             <div class="recent-days" id="recentDays"></div>
         </div>
 
+        <!-- Polymarket 市场数据 -->
+        <div id="marketsContainer"></div>
+
         <div class="refresh-info">
             ⏰ 数据每5分钟自动更新 | 下次更新: <span id="nextUpdate"></span>
         </div>
@@ -235,6 +289,47 @@
                             </div>
                         `;
                     });
+
+                    // Polymarket 市场数据
+                    if (data.polymarket_markets && data.polymarket_markets.length > 0) {
+                        const marketsContainer = document.getElementById('marketsContainer');
+                        marketsContainer.innerHTML = '<h2 style="color: white; text-align: center; margin-bottom: 20px;">📈 Polymarket 市场</h2>';
+
+                        data.polymarket_markets.forEach(market => {
+                            const sortedDays = Object.entries(market.daily).sort((a, b) => a[0].localeCompare(b[0]));
+
+                            let daysHtml = '';
+                            sortedDays.forEach(([date, count]) => {
+                                daysHtml += `
+                                    <div class="market-day">
+                                        <div class="date">${date}</div>
+                                        <div class="count">${count}</div>
+                                    </div>
+                                `;
+                            });
+
+                            marketsContainer.innerHTML += `
+                                <div class="market-card">
+                                    <div class="market-header">
+                                        <div>
+                                            <div style="font-size: 0.9em; opacity: 0.9;">Polymarket Market</div>
+                                            <div class="market-title">${market.title}</div>
+                                            <div style="font-size: 0.85em; margin-top: 5px; opacity: 0.8;">
+                                                ${market.start_et.split('T')[0]} 12:00 PM ET - ${market.end_et.split('T')[0]} 12:00 PM ET
+                                            </div>
+                                        </div>
+                                        <div class="market-total">${market.total}</div>
+                                    </div>
+                                    <div style="margin-bottom: 15px; font-size: 1.1em; opacity: 0.9;">
+                                        平均: ${market.avg.toFixed(1)} 条/天
+                                    </div>
+                                    <div class="market-days">
+                                        ${daysHtml}
+                                    </div>
+                                </div>
+                            `;
+                        });
+                    }
 
                     // 下次更新时间
                     const nextUpdate = new Date(Date.now() + 300000);
