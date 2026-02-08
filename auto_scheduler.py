@@ -20,7 +20,7 @@ print("按 Ctrl+C 停止运行")
 print("=" * 50)
 
 # 创建日志目录
-log_dir = "logs"
+log_dir = os.path.join(os.getcwd(), "logs")
 if not os.path.exists(log_dir):
     os.makedirs(log_dir)
 
@@ -37,10 +37,14 @@ while True:
         # 记录日志
         log_file = os.path.join(log_dir, f"update_{now.strftime('%Y%m%d')}.log")
 
-        with open(log_file, "a", encoding="utf-8") as f:
-            f.write(f"\n{'='*60}\n")
-            f.write(f"更新 #{update_count} - {timestamp}\n")
-            f.write(f"{'='*60}\n")
+        try:
+            with open(log_file, "a", encoding="utf-8") as f:
+                f.write(f"\n{'='*60}\n")
+                f.write(f"更新 #{update_count} - {timestamp}\n")
+                f.write(f"{'='*60}\n")
+        except Exception as e:
+            print(f"  ⚠️  无法写入日志: {e}")
+            # 继续执行，不因为日志错误而停止
 
         # 运行更新脚本
         try:
@@ -57,12 +61,15 @@ while True:
                 errors='replace'
             )
 
-            with open(log_file, "a", encoding="utf-8") as f:
-                f.write("STDOUT:\n")
-                f.write(result.stdout)
-                f.write("\nSTDERR:\n")
-                f.write(result.stderr)
-                f.write(f"\n返回码: {result.returncode}\n")
+            try:
+                with open(log_file, "a", encoding="utf-8") as f:
+                    f.write("STDOUT:\n")
+                    f.write(result.stdout)
+                    f.write("\nSTDERR:\n")
+                    f.write(result.stderr)
+                    f.write(f"\n返回码: {result.returncode}\n")
+            except:
+                pass  # 忽略日志错误
 
             # 检查是否有数据变更
             git_diff = subprocess.run(
@@ -73,8 +80,11 @@ while True:
             if git_diff.returncode != 0:
                 print("  ✅ 发现新数据，提交到 GitHub...")
 
-                with open(log_file, "a", encoding="utf-8") as f:
-                    f.write("\n>>> 提交更新到 GitHub\n")
+                try:
+                    with open(log_file, "a", encoding="utf-8") as f:
+                        f.write("\n>>> 提交更新到 GitHub\n")
+                except:
+                    pass  # 忽略日志错误
 
                 # 添加并提交
                 subprocess.run(["git", "add", "data/daily_tweets.json", "data/dashboard_data.json"])
@@ -82,8 +92,11 @@ while True:
                 subprocess.run(["git", "commit", "-m", commit_msg])
                 push_result = subprocess.run(["git", "push", "origin", "main"])
 
-                with open(log_file, "a", encoding="utf-8") as f:
-                    f.write(f"推送结果: {push_result.returncode}\n")
+                try:
+                    with open(log_file, "a", encoding="utf-8") as f:
+                        f.write(f"推送结果: {push_result.returncode}\n")
+                except:
+                    pass  # 忽略日志错误
 
                 # 更新 gh-pages
                 print("  📊 更新网页...")
@@ -106,8 +119,11 @@ while True:
             print("  ⚠️  更新超时")
         except Exception as e:
             print(f"  ❌ 错误: {e}")
-            with open(log_file, "a", encoding="utf-8") as f:
-                f.write(f"\n错误: {e}\n")
+            try:
+                with open(log_file, "a", encoding="utf-8") as f:
+                    f.write(f"\n错误: {e}\n")
+            except:
+                pass  # 忽略日志错误
 
         # 显示下次更新时间
         next_update = now.replace(minute=now.minute//5*5+5, second=0, microsecond=0)
